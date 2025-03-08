@@ -1,0 +1,3 @@
+/Users/iredui.b/Desktop/KARA_test3/build/CMakeFiles/main.dir
+/Users/iredui.b/Desktop/KARA_test3/build/CMakeFiles/edit_cache.dir
+/Users/iredui.b/Desktop/KARA_test3/build/CMakeFiles/rebuild_cache.dir

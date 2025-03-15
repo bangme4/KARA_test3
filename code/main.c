@@ -1,10 +1,14 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> refs/remotes/origin/main
 #include <stdbool.h>
 #include <stdio.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_mixer.h>
 
+<<<<<<< HEAD
 
 // Window
 #define WINDOW_TITLE "KARA"
@@ -15,13 +19,23 @@
 #define IMAGE_FLAGS (IMG_INIT_JPG | IMG_INIT_PNG)
 
 //Map dimention and tile size
+=======
+#define WINDOW_TITLE "KARA"
+#define SCREEN_WIDTH 1200
+#define SCREEN_HEIGHT 800
+#define IMAGE_FLAGS (IMG_INIT_JPG | IMG_INIT_PNG)
+>>>>>>> refs/remotes/origin/main
 #define MAP_WIDTH 100
 #define MAP_HEIGHT 100
 #define TILE_SIZE 24
 #define PLAYER_FRAME_COUNT 4
 Mix_Music *button_click_music;
 
+<<<<<<< HEAD
 // Structure to store game-related elements
+=======
+
+>>>>>>> refs/remotes/origin/main
 struct Game {
     SDL_Window *window;
     SDL_Renderer *renderer;
@@ -41,19 +55,31 @@ struct Game {
     // Mix_Music *settings_music;
     int map[MAP_HEIGHT][MAP_WIDTH];
 };
+<<<<<<< HEAD
 // Structure to store player-related elements
+=======
+
+>>>>>>> refs/remotes/origin/main
 struct Player {
     int x, y; 
     int speed;
     bool isAttacking;
     int attackCooldown;
 };
+<<<<<<< HEAD
 // Structure to store camera-related elements
+=======
+
+>>>>>>> refs/remotes/origin/main
 struct Camera {
     int x, y;
     float scale;
 };
+<<<<<<< HEAD
 // Structure to store button-related elements
+=======
+
+>>>>>>> refs/remotes/origin/main
 struct Button {
     SDL_Rect rect;
     SDL_Texture *texture;
@@ -62,7 +88,11 @@ struct Button {
     SDL_Rect originalRect;
     bool hover_played;
 };
+<<<<<<< HEAD
 // Functions for player render
+=======
+
+>>>>>>> refs/remotes/origin/main
 void render_player(SDL_Renderer *renderer, struct Player *player, struct Camera *camera) {
     SDL_Rect playerRect = { 
         (player->x - camera->x) * camera->scale, 
@@ -73,14 +103,21 @@ void render_player(SDL_Renderer *renderer, struct Player *player, struct Camera 
     SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255); 
     SDL_RenderFillRect(renderer, &playerRect);
 }
+<<<<<<< HEAD
 // Functions for map render
+=======
+
+>>>>>>> refs/remotes/origin/main
 void render_map(SDL_Renderer *renderer, struct Camera *camera) {
     int tile_size = 24;
     int map_size = 100;
 
     SDL_SetRenderDrawColor(renderer, 200, 200, 200, 255);
 
+<<<<<<< HEAD
     // Render map
+=======
+>>>>>>> refs/remotes/origin/main
     for (int y = 0; y < map_size; y++) {
         for (int x = 0; x < map_size; x++) {
             SDL_Rect tileRect = {
@@ -98,18 +135,28 @@ void render_map(SDL_Renderer *renderer, struct Camera *camera) {
         }
     }
 }
+<<<<<<< HEAD
 // Functions for player input
 void handle_input(SDL_Event *event, struct Player *player, struct Camera *camera) {
     const Uint8 *state = SDL_GetKeyboardState(NULL);
 
     // Player movement
+=======
+
+void handle_input(SDL_Event *event, struct Player *player, struct Camera *camera) {
+    const Uint8 *state = SDL_GetKeyboardState(NULL);
+
+>>>>>>> refs/remotes/origin/main
     if (state[SDL_SCANCODE_W]) player->y -= player->speed;
     if (state[SDL_SCANCODE_S]) player->y += player->speed;
     if (state[SDL_SCANCODE_A]) player->x -= player->speed;
     if (state[SDL_SCANCODE_D]) player->x += player->speed;
 
+<<<<<<< HEAD
 
     // Player attack
+=======
+>>>>>>> refs/remotes/origin/main
     if (state[SDL_SCANCODE_SPACE] && player->attackCooldown == 0) {
         player->isAttacking = true;
         player->attackCooldown = 20;
@@ -120,22 +167,36 @@ void handle_input(SDL_Event *event, struct Player *player, struct Camera *camera
         }
     }
 
+<<<<<<< HEAD
     // Player attack cooldown
+=======
+>>>>>>> refs/remotes/origin/main
     if (player->attackCooldown > 0) {
         player->attackCooldown--;
     }
 
+<<<<<<< HEAD
 
     // Camera zoom
+=======
+>>>>>>> refs/remotes/origin/main
     if (player->x < 0) player->x = 0;
     if (player->x > MAP_WIDTH * TILE_SIZE - 24) player->x = MAP_WIDTH * TILE_SIZE - 24;
     if (player->y < 0) player->y = 0;
     if (player->y > MAP_HEIGHT * TILE_SIZE - 24) player->y = MAP_HEIGHT * TILE_SIZE - 24;
 
+<<<<<<< HEAD
     camera->x = player->x - SCREEN_WIDTH / (2 * camera->scale);
     camera->y = player->y - SCREEN_HEIGHT / (2 * camera->scale);
 }
 // Functions for player attack render
+=======
+
+    camera->x = player->x - SCREEN_WIDTH / (2 * camera->scale);
+    camera->y = player->y - SCREEN_HEIGHT / (2 * camera->scale);
+}
+
+>>>>>>> refs/remotes/origin/main
 void render_attack(SDL_Renderer *renderer, struct Player *player, struct Camera *camera) {
     if (!player->isAttacking) return;
 
@@ -153,30 +214,50 @@ void render_attack(SDL_Renderer *renderer, struct Player *player, struct Camera 
 }
 
 
+<<<<<<< HEAD
 // Functions for button render
 void button_render(SDL_Renderer *renderer, struct Button *button) {
     SDL_RenderCopy(renderer, button->texture, NULL, &button->rect);
 }
 // Functions for button hover
+=======
+
+void button_render(SDL_Renderer *renderer, struct Button *button) {
+    SDL_RenderCopy(renderer, button->texture, NULL, &button->rect);
+}
+
+>>>>>>> refs/remotes/origin/main
 void handle_button_hover(struct Button *button, int mouseX, int mouseY, struct Game *game) {
     if (mouseX >= button->rect.x && mouseX <= button->rect.x + button->rect.w &&
         mouseY >= button->rect.y && mouseY <= button->rect.y + button->rect.h) {
         
+<<<<<<< HEAD
             // Play hover sound
+=======
+>>>>>>> refs/remotes/origin/main
         if (!button->hover_played) {
             Mix_PlayChannel(-1, game->button_hover_sound, 0);
             button->hover_played = true;
         }
+<<<<<<< HEAD
         // Increase button size
+=======
+        
+>>>>>>> refs/remotes/origin/main
         button->rect.w = button->originalRect.w * 1.1;
         button->rect.h = button->originalRect.h * 1.1;
         button->rect.x = button->originalRect.x - (button->rect.w - button->originalRect.w) / 2;
         button->rect.y = button->originalRect.y - (button->rect.h - button->originalRect.h) / 2;
 
         button->texture = button->hover_texture;
+<<<<<<< HEAD
     }
     // Reset button size
     else {
+=======
+
+    } else {
+>>>>>>> refs/remotes/origin/main
         if (button->hover_played) {
             button->hover_played = false;
         }
@@ -184,7 +265,11 @@ void handle_button_hover(struct Button *button, int mouseX, int mouseY, struct G
         button->texture = button->original_texture;
     }
 }
+<<<<<<< HEAD
 // Functions for game end
+=======
+
+>>>>>>> refs/remotes/origin/main
 void game_cleanup(struct Game *game, int exit_status) {
     SDL_DestroyTexture(game->background);
     SDL_DestroyTexture(game->logo);
@@ -208,13 +293,20 @@ void game_cleanup(struct Game *game, int exit_status) {
     exit(exit_status);
 }
 
+<<<<<<< HEAD
 // Function prototypes
+=======
+>>>>>>> refs/remotes/origin/main
 bool sdl_initiate(struct Game *game);
 bool load_media(struct Game *game);
 bool button_init(struct Button *button, SDL_Renderer *renderer, const char *image_path, const char *hover_image_path, int x, int y, int w, int h);
 bool button_is_clicked(struct Button *button, SDL_Event *event);
 void handle_button_hover(struct Button *button, int mouseX, int mouseY, struct Game *game);
+<<<<<<< HEAD
  // Main function
+=======
+ 
+>>>>>>> refs/remotes/origin/main
 int main(){
     struct Game game ={
         .window = NULL,
@@ -228,28 +320,45 @@ int main(){
         .story4 = NULL,
     };
 
+<<<<<<< HEAD
     // Initialize game elements
+=======
+>>>>>>> refs/remotes/origin/main
     struct Button button1, button2, button3, sbutton;
     struct Player player = { 500, 500, 3 };
     struct Camera camera = { 0, 0, 2.0f };
 
+<<<<<<< HEAD
     // Start page
     int page = 0;
 
     // Initialize SDL
+=======
+    int page = 0;
+
+>>>>>>> refs/remotes/origin/main
     if(sdl_initiate(&game)) {
         game_cleanup(&game, EXIT_FAILURE);
     }
 
+<<<<<<< HEAD
     // Load media
+=======
+>>>>>>> refs/remotes/origin/main
     if(load_media(&game)) {
         game_cleanup(&game, EXIT_FAILURE);
     }
 
+<<<<<<< HEAD
     // Play menu music
     Mix_PlayMusic(game.menu_music, -1);
 
     // Initialize buttons
+=======
+    Mix_PlayMusic(game.menu_music, -1);
+
+
+>>>>>>> refs/remotes/origin/main
     if (button_init(&button1, game.renderer, "../assets/button1.png", "../assets/button1p.png", 475, 600, 250, 80) ||
     button_init(&button2, game.renderer, "../assets/button2.png", "../assets/button2p.png", 475, 500, 250, 80) ||
     button_init(&button3, game.renderer, "../assets/button3.png", "../assets/button3p.png", 475, 400, 250, 80) ||
@@ -279,7 +388,11 @@ int main(){
                             break;
                     }
                     break;
+<<<<<<< HEAD
                 // Handle mouse hover and click
+=======
+        
+>>>>>>> refs/remotes/origin/main
                 case SDL_MOUSEMOTION:
                     if (page == 0) {
                         handle_button_hover(&button1, event.motion.x, event.motion.y, &game);
@@ -299,7 +412,11 @@ int main(){
                         handle_button_hover(&sbutton, event.motion.x, event.motion.y, &game);
                     }
                     break;
+<<<<<<< HEAD
                 // Handle mouse click
+=======
+        
+>>>>>>> refs/remotes/origin/main
                 case SDL_MOUSEBUTTONDOWN:
                     if (button_is_clicked(&button1, &event)) {
                         Mix_HaltMusic();
@@ -343,7 +460,11 @@ int main(){
 
         SDL_RenderCopy(game.renderer, game.background, NULL, NULL);
 
+<<<<<<< HEAD
         // Pages and what they do
+=======
+        
+>>>>>>> refs/remotes/origin/main
         if (page == 0) {
             SDL_Rect logoRect = {375, 150, 450, 170};
             SDL_RenderCopy(game.renderer, game.logo, NULL, &logoRect);
@@ -404,7 +525,11 @@ int main(){
     
     return 0;
 }
+<<<<<<< HEAD
 // Function definitions
+=======
+
+>>>>>>> refs/remotes/origin/main
 bool sdl_initiate(struct Game *game) {
     if (SDL_Init(SDL_INIT_EVERYTHING) != 0) {
         fprintf(stderr, "Error SDL: %s\n", SDL_GetError());
@@ -439,7 +564,11 @@ bool sdl_initiate(struct Game *game) {
 
     return false;
 }
+<<<<<<< HEAD
 // Function to load media
+=======
+
+>>>>>>> refs/remotes/origin/main
 bool load_media(struct Game *game) {
     game->background = IMG_LoadTexture(game->renderer, "../assets/background.jpg");
     // game->background_start = IMG_LoadTexture(game->renderer, "../assets/background_start.jpg");
@@ -506,7 +635,11 @@ bool load_media(struct Game *game) {
 
     return false;
 }
+<<<<<<< HEAD
 // Function to initialize button
+=======
+
+>>>>>>> refs/remotes/origin/main
 bool button_init(struct Button *button, SDL_Renderer *renderer, const char *image_path, const char *hover_image_path, int x, int y, int w, int h) {
     button->texture = IMG_LoadTexture(renderer, image_path);
     button->hover_texture = IMG_LoadTexture(renderer, hover_image_path);
@@ -523,7 +656,11 @@ bool button_init(struct Button *button, SDL_Renderer *renderer, const char *imag
     return false;
 }
 
+<<<<<<< HEAD
 // Function to check if button is clicked
+=======
+
+>>>>>>> refs/remotes/origin/main
 bool button_is_clicked(struct Button *button, SDL_Event *event) {
     if (event->type == SDL_MOUSEBUTTONDOWN) {
         int mouseX = event->button.x;
